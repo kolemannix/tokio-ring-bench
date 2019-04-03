@@ -106,6 +106,6 @@ fn main() {
 }
 
 fn print_usage_and_exit() -> ! {
-    eprintln!("Usage; tokio-ring <num-nodes> <num-times-message-around-ring>");
+    eprintln!("Usage; tokio-ring-bench <num-nodes> <num-times-message-around-ring>");
     std::process::exit(1);
 }
