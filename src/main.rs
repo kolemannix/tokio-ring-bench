@@ -1,9 +1,3 @@
-use futures::lazy;
-use tokio::prelude::*;
-use tokio::prelude::future::Either;
-use tokio::sync::mpsc;
-
-
 /// Ring benchmark inspired by Programming Erlang: Software for a
 /// Concurrent World, by Joe Armstrong, Chapter 8.11.2
 ///
@@ -11,9 +5,13 @@ use tokio::sync::mpsc;
 /// message round the ring M times so that a total of N * M messages
 /// get sent. Time how long this takes for different values of N and M."
 
+use futures::lazy;
+use tokio::prelude::*;
+use tokio::sync::mpsc;
+
 fn spawn_process(
     max: usize,
-    name: String,
+    _name: String,
     rx: mpsc::Receiver<Option<usize>>,
     tx: mpsc::Sender<Option<usize>>,
     complete: mpsc::Sender<()>,
