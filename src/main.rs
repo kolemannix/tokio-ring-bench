@@ -24,8 +24,8 @@ fn spawn_process(
         .fold(0, move |count, msg| {
             let to_send = if count == max {None} else {msg};
             tx.clone().send(to_send).map(move |_| count + 1).map_err(|_| ())
-        }).and_then(move |c| {
-            println!("{}: Finito. Forwarded {} messages", name, c);
+        }).and_then(move |_c| {
+            // println!("{}: Finito. Forwarded {} messages", name, c);
             complete.send(()).map(|_| ()).map_err(|_| ())
         })
 }
